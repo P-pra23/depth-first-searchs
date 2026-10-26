@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: Prathikshaa </h3>
+<h3>Register Number: 212224100043     </h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -93,3 +93,43 @@ F H <BR>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
 
+## Program:
+```
+from collections import defaultdict
+
+
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+
+    for neighbour in graph[start]:
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
+            visited[neighbour] = True
+
+    return path
+
+
+graph = defaultdict(list)
+
+n, e = map(int, input().split())
+
+for i in range(e):
+    u, v = map(str, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+start = 'A'
+visited = defaultdict(bool)
+path = []
+
+traversedpath = dfs(graph, start, visited, path)
+
+print(traversedpath)
+```
+## Output:
+<img width="590" height="265" alt="image" src="https://github.com/user-attachments/assets/6703b7b0-1875-402b-a04f-7d68dcbb5c90" />
+
+## Result:
+
+Thus, the Depth First Search (DFS) traversal of a graph was successfully implemented using Python 3. The graph was traversed by visiting each node and recursively exploring its unvisited adjacent nodes. The traversal order was displayed successfully, avoiding repeated visits to nodes using a visited array.
